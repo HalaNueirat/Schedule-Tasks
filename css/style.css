@@ -1,0 +1,148 @@
+:root{
+    --main-color:#16a3b7;
+    --border-color:#f3f3f3;
+}
+/*Start Todo Input*/
+.ToDoInput{
+    h1{
+        text-align: center;
+        margin-bottom: 10px;
+        font-family: Sans-serif;
+    }
+    .ToDoInputForm{
+        margin-left: 100px;
+        margin-right: 100px;
+        border:2px solid var(--border-color);
+        border-radius: 5px;
+        input{
+            margin-bottom: 25px;
+            margin-top: 25px;
+            margin-left: 25px;
+            width: 90%;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            padding-left: 60px;
+            border-radius: 5px;
+            border: 2px solid var(--border-color);
+            position:relative;
+            
+        }
+        .icon{
+            position: absolute;
+            top:95px;
+            left: 128px;
+            height: 38px;
+            width: 3%;
+            background-color: var(--main-color);
+            text-align: center;
+    
+            i{
+                position: absolute;
+                top:50%;
+                left: 30%;
+                transform: translateY(-50%);
+                font-size: 1.2em;
+                color:white;
+            }
+        }
+        
+        
+        button{
+            margin-bottom: 25px;
+            margin-left: 25px;
+            width: 96%;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            color:white;
+            background-color: var(--main-color);
+            border-radius: 5px;
+            border-style: none;
+        }
+    }
+}
+/*End Todo Input*/
+
+/*Start Todo List*/
+.ToDoList{
+    h1{
+        text-align: center;
+        margin-bottom: 10px;
+        font-family: Sans-serif;
+    }
+    .Buttons{
+        margin-left: 100px;
+        button{
+            background-color: var(--main-color);
+            width:28%;
+            margin-right: 40px;
+            padding-top: 10px;
+            margin-bottom: 5%;
+            padding-bottom: 10px;
+            color: white;
+            border-radius: 5px;
+            border: 2px solid var(--main-color);
+            
+        }
+        
+    }
+    .TasksList{
+        display:flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap:20%;
+        margin-left: 100px;
+        margin-right: 100px;
+        margin-bottom: 2%;
+        border:2px solid var(--border-color);
+        border-radius: 5px;
+        padding-top: 1%;
+        padding-bottom: 1%;
+
+        .content{
+            flex-basis: 70%;
+            p{  
+                font-family: Sans-serif;
+            }
+        }
+        .Icons{
+        
+            input{
+                font-size: 1.1em;
+            }
+            button{
+                background-color:white;
+                border-style: none;
+                font-size: 1.1em;
+            }
+            .edit{
+                color:#fcc108;
+                
+                
+            }
+            .delete{
+                color:#db3341;
+                
+            }
+        }
+        
+    }
+    .DeleteForm{
+        margin-left: 100px;
+        margin-top: 3%;
+        padding-top: 1%;
+        padding-bottom: 1%;
+        button{
+            background-color:#db3245 ;
+            color: white;
+            width:44%;
+            border-radius: 5px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            border: 2px solid #db3245;
+            margin-right: 3%;
+            font-family: Sans-serif;
+        }
+    }
+}
+

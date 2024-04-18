@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Schedule Tasks</title>
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/all.min.css">
+    </head>
+    <body>
+        <!-- Start Todo Input-->
+        <div class="ToDoInput">
+            <h1>TodoInput</h1>
+            
+            <form class="ToDoInputForm">
+                
+                <input type="text" placeholder="New Todo" >
+                <span class="icon">
+                    <i class='fas fa-book'></i>
+                </span>
+                <button type="submit"> Add new task </button>
+            </form>
+            
+        </div>
+        <!-- End Todo Input-->
+
+        <!--Start Todo List-->
+
+        <div class="ToDoList">
+            <h1>TodoList</h1>
+            <form class="Buttons">
+                <button type="submit" class="AllButton">All</button>
+                <button type="submit" class="DoneButton">Done</button>
+                <button type="submit" class="TodoButton">Todo</button>
+            </form>
+
+            <div class="TasksList">
+                <div class="content">
+                <p>Learn ReactJS basis </p>
+                </div>
+                <div class="Icons">
+                <input type="checkbox" class="checkbox">
+                <button type="button" class="edit"><i class='fas fa-pen'></i></button>
+                <button type="button" class="delete"><i class="fas fa-trash"></i></button>
+                </div>
+            </div>
+
+            <form class="DeleteForm">
+                <button type="submit" class="DeleteDoneTasks"> Delete done tasks</button>
+                <button type="submit" class="DeleteAllTasks"> Delete all tasks</button>
+            </form>
+            
+        </div>
+
+        <!--End Todo List-->
+    </body>
+
+</html>
