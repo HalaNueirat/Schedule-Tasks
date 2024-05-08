@@ -3,57 +3,188 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="JavaScript.js"> </script>
         <title>Schedule Tasks</title>
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/all.min.css">
     </head>
     <body>
-        <!-- Start Todo Input-->
-        <div class="ToDoInput">
-            <h1>TodoInput</h1>
-            
-            <form class="ToDoInputForm">
-                
-                <input type="text" placeholder="New Todo" >
-                <span class="icon">
-                    <i class='fas fa-book'></i>
-                </span>
-                <button type="submit"> Add new task </button>
-            </form>
-            
-        </div>
-        <!-- End Todo Input-->
+        <div class="container">
+            <!-- Start Todo Input-->
+            <div class="ToDoInput">
+                <h1>TodoInput</h1>           
+                <form class="ToDoInputForm" autocomplete="off" >
+                    <div class="textField">
+                        <input type="text" placeholder="New Todo" id="inputField">
+                        <span class="icon">
+                            <i class='fas fa-book'></i>
+                        </span>
+                    </div>
+                    <button type="button" id="addTaskButton" onclick="addNewTask()"> Add new task </button>
+                </form>           
+            </div>
+            <!-- End Todo Input-->
 
-        <!--Start Todo List-->
-
-        <div class="ToDoList">
-            <h1>TodoList</h1>
-            <form class="Buttons">
-                <button type="submit" class="AllButton">All</button>
-                <button type="submit" class="DoneButton">Done</button>
-                <button type="submit" class="TodoButton">Todo</button>
-            </form>
-
-            <div class="TasksList">
-                <div class="content">
-                <p>Learn ReactJS basis </p>
+            <!--Start Todo List-->
+            <div class="ToDoList">
+                <h1>TodoList</h1>
+                <form class="Buttons" >
+                    <button type="button" id="allButton" >All</button>
+                    <button type="button" id="doneButton" >Done</button>
+                    <button type="button" id="todoButton" >Todo</button>
+                </form>
+                <div class="taskContainer">
+                    <div class="TasksList">
+                        <div class="content">
+                            <p>Learn ReactJS basis </p>
+                        </div>
+                        <div class="Icons">
+                            <input type="checkbox" id="check">
+                            <button type="button" class="edit" onclick="openEditPopup()"><i class='fas fa-pen'></i></button>
+                            <button type="button" class="delete" onclick="openDeletePopup()"><i class="fas fa-trash"></i></button>
+                        </div>
+                    </div>
                 </div>
-                <div class="Icons">
-                <input type="checkbox" class="checkbox">
-                <button type="button" class="edit"><i class='fas fa-pen'></i></button>
-                <button type="button" class="delete"><i class="fas fa-trash"></i></button>
+                    
+                <form class="DeleteForm">
+                    <button type="button" class="DeleteDoneTasks" onclick="openDeleteDoneTasksPopup()"> Delete done tasks</button>
+                    <button type="button" class="DeleteAllTasks" onclick="openDeleteAllTasksPopup()"> Delete all tasks</button>
+                </form>            
+            </div>
+            <!--End Todo List-->
+        </div>
+        
+        <div class="popup">
+
+            <!--Start warning Popup-->
+            <div class="warningPopup">
+                <div class="icon">
+                <i class='fas fa-exclamation-triangle'></i>
+                </div>
+                <p>You Should enter only words without numbers and special characters </p>
+                <button type="button" class="close" onclick="closeWarningPopup()">Close</button>
+            </div>
+            <!--End warning Popup-->
+
+            <!--Start edit Popup-->
+            <div class="editPopup">
+                <div class="editContainer">
+                    <div class="icon">
+                        <p id="editTaskText"> </p>
+                        <i class='fas fa-pen'></i> 
+                    </div>
+
+                    <div>
+                        <input type="text" id="newText">
+                    </div>
+                    
+                    <div class="buttons">
+                        <button type="button" id="edit" class="edit" onclick="editTask()" >Edit </button>
+                        <button type="button" class="cancel" onclick="closeEditPopup()">Cancel </button>
+                    </div>
                 </div>
             </div>
+            <!--End edit Popup-->
 
-            <form class="DeleteForm">
-                <button type="submit" class="DeleteDoneTasks"> Delete done tasks</button>
-                <button type="submit" class="DeleteAllTasks"> Delete all tasks</button>
-            </form>
+            <!--Start delete Popup-->
+            <div class="deletePopup">
+                <div class="deleteContainer">
+                    <h2> Delete Task!</h2> 
+                    <div class="deleteTask">
+                        <div>
+                            <p id="deleteTaskText"> </p>
+                        </div>
+                        <i class="fas fa-angle-double-right fa-2x icon"></i>
+                        <div class="trash">
+                            <i class="fas fa-trash"></i>
+                        </div>  
+                    </div>
+                    
+                    <div class="buttons">
+                        <button type="button" class="yes" onclick="openYesPopup()">Yes</button>
+                        <button type="button" class="no" onclick="closeDeletePopup()">No</button>
+                    </div>
+                </div>   
+            </div>
+            <!--End delete Popup-->
+
+            <!--Start yes Popup-->
+            <div class="yesPopup">
+                <div class="checkIcon">
+                    <i class="fa fa-check"></i>
+                </div>
+                <p>The task successfully deleted</p>
+                <button class="close" onclick="closeYesPopup()">Close</button>
+            </div>
+            <!--End yes Popup-->
             
-        </div>
+            <!--Start delete done tasks Popup-->
+            <div class="deleteDoneTasksPopup">
+                <div class="deleteContainer">
+                    <h2> Delete Done Tasks!</h2> 
+                    <div class="deleteTask">
+                        <div>
+                            <p> Are you sure you want to delete done tasks? </p>
+                        </div>
+                        <i class="fas fa-angle-double-right fa-2x icon"></i>
+                        <div class="trash">
+                            <i class="fas fa-trash"></i>
+                        </div>  
+                    </div>
+                    
+                    <div class="buttons">
+                        <button type="button" class="yes" onclick="deleteDoneTasks()">Yes</button>
+                        <button type="button" class="no" onclick="closeDeleteDoneTasksPopup()">No</button>
+                    </div>
+                </div>   
+            </div>
+            <!--End delete done tasks Popup-->
 
-        <!--End Todo List-->
+            <!--Start noDoneTasksPopup-->
+            <div class="noDoneTasksPopup">
+                <div class="icon">
+                <i class='fas fa-exclamation-triangle'></i>
+                </div>
+                <p>There are no done tasks to delete </p>
+                <button type="button" class="close" onclick="closeNoDoneTasksPopup()">Close</button>
+            </div>
+            <!--End noDoneTasksPopup-->
+
+            <!--Start delete all tasks Popup-->
+            <div class="deleteAllTasksPopup">
+                <div class="deleteContainer">
+                    <h2> Delete All Tasks!</h2> 
+                    <div class="deleteTask">
+                        <div>
+                            <p> Are you sure you want to delete all tasks? </p>
+                        </div>
+                        <i class="fas fa-angle-double-right fa-2x icon"></i>
+                        <div class="trash">
+                            <i class="fas fa-trash"></i>
+                        </div>  
+                    </div>
+                    
+                    <div class="buttons">
+                        <button type="button" class="yes" onclick="deleteAllTasks()">Yes</button>
+                        <button type="button" class="no" onclick="closeDeleteAllTasksPopup()">No</button>
+                    </div>
+                </div>   
+            </div>
+            <!--End delete all tasks Popup-->
+        
+            <!--Start noDoneTasksPopup-->
+            <div class="noTasksPopup">
+                <div class="icon">
+                <i class='fas fa-exclamation-triangle'></i>
+                </div>
+                <p>There are no tasks to delete </p>
+                <button type="button" class="close" onclick="closeNoTasksPopup()">Close</button>
+            </div>
+            <!--End noDoneTasksPopup-->
+
+        </div>
+        <script src="JavaScript.js"> </script>
     </body>
 
 </html>
